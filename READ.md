@@ -12,3 +12,4 @@ npm start
 **Instructions on what the foundational files are in conjunction with the Portfolio**
 -node_modules are NPM libraries
 -Bootstrap.js is a common name that you place at the root of a React application (Not the bootstrap framework)
+-To delete a node module, delete it from dependecies under package.json and run npm install
