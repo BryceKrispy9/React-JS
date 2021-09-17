@@ -36,3 +36,24 @@ babel-polyfill fills in everything in a browser that is missing
 assets - README.md (put static images and standalone libraries{no npm support}) - Company logo
 favicon.ico - icon that is at the top of the web browser(tab)
 index.html - mainly used for the app-wrapper to get the code from the react.js code
+
+
+**webpack directy**
+common.config.js - common is a set of rules that the application will follow for every browser
+-Putting together a list of rules we want to follow
+-entry:
+app:  where the application start and which file to look at first
+vendor:  when we bring in the polyfill
+
+-resolve:
+extensions: what type of files we want in our app (.js, .scss)
+modules: pointing to listed dependencies or node_modules
+
+-rules:
+test: testing against a certain value (against .js for example)
+exclude: modules in example
+use: babel-loader if you come accross any modern JS
+
+dev.config.js - works on your local machine
+postcss.config.js - works with css files
+prod.config.js - works on a server
