@@ -30,3 +30,9 @@ bootstrap.js makes the start of the application
 
 index.html is just the web browser that gets the ".app-wrapper" in the first div body
 babel-polyfill fills in everything in a browser that is missing
+
+
+**static directory**
+assets - README.md (put static images and standalone libraries{no npm support}) - Company logo
+favicon.ico - icon that is at the top of the web browser(tab)
+index.html - mainly used for the app-wrapper to get the code from the react.js code
