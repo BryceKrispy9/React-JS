@@ -57,3 +57,17 @@ use: babel-loader if you come accross any modern JS
 dev.config.js - works on your local machine
 postcss.config.js - works with css files
 prod.config.js - works on a server
+
+
+**Babel**
+A "." infront of a file name is a hidden file
+Babel is a JS compiler (Takes the code we write and compiles it into something that most browsers can read)
+-Certain browsers don't understand newer JS
+
+const nums = [1, 2, 3].map(el => {
+    return el * 5;
+}) - (Map over array of numbers, times it by 5 and stores it)
+
+returns: var nums = [1, 2, 3].map(function (el) {
+    return el * 5
+})
