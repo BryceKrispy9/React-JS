@@ -80,3 +80,8 @@ env.js - what dev host/port to use to test the code for the devServer (creating 
 **package.json**
 (See package.json file)
 Most of the scripts deal a lot with dynamic behavoior and how it interacts with the server
+
+
+**Difference between package.json and package-lock.json**
+package-lock.json contains more detailed information about the dependencies and EXACTLY what's being used
+DO NOT CHANGE THE PACKAGE-LOCK.json FILE (IT IS AUTOMATICALLY GENERATED)
