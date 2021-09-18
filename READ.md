@@ -75,3 +75,8 @@ returns: var nums = [1, 2, 3].map(function (el) {
 
 **Overide Server Ports**
 env.js - what dev host/port to use to test the code for the devServer (creating env.examples.js is normal)
+
+
+**package.json**
+(See package.json file)
+Most of the scripts deal a lot with dynamic behavoior and how it interacts with the server
