@@ -90,3 +90,6 @@ DO NOT CHANGE THE PACKAGE-LOCK.json FILE (IT IS AUTOMATICALLY GENERATED)
 > **Procfile, Readme, Server JS**
 Procfile - Tool to deploy to the web (Type of server we want to use)
 server.js - Pulls config for the server (express, port, app, etc.)
+
+> **Constructor**
+Going to allow you to set initial state and set custom functions to utilize
