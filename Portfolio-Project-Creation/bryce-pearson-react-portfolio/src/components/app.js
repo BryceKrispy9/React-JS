@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import moment from "moment";
 
-import PortfolioContainer from './portfolio-container';
+import PortfolioContainer from './portfolio/portfolio-container';
 
 export default class App extends Component {
   render() {
     return (
       <div className='app'>
         <h1>Bryce Pearson Portfolio</h1>
-        <PortfolioContainer />
         <div>
           {moment().format('MMMM Do YYYY, h:mm:ss a')}
         </div>
+        <PortfolioContainer />
       </div>
     );
   }
 }
 
-window.alert("Today's date and time are " + moment().format('MMMM Do YYYY, h:mm:ss a'));
+// window.alert("Today's date and time are " + moment().format('MMMM Do YYYY, h:mm:ss a'));
