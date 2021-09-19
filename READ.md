@@ -9,13 +9,13 @@ react-bootstrap
 npm install
 npm start
 
-**Instructions on what the foundational files are in conjunction with the Portfolio**
+> **Instructions on what the foundational files are in conjunction with the Portfolio**
 -node_modules are NPM libraries
 -Bootstrap.js is a common name that you place at the root of a React application (Not the bootstrap framework)
 -To delete a node module, delete it from dependecies under package.json and run npm install
 
 
-**src folder**
+> **src folder**
 src folder is pure react and JS code we write
 
 index.js - Interact with redux store (redux gives us ability to store everything in 1 place)
@@ -32,13 +32,13 @@ index.html is just the web browser that gets the ".app-wrapper" in the first div
 babel-polyfill fills in everything in a browser that is missing
 
 
-**static directory**
+> **static directory**
 assets - README.md (put static images and standalone libraries{no npm support}) - Company logo
 favicon.ico - icon that is at the top of the web browser(tab)
 index.html - mainly used for the app-wrapper to get the code from the react.js code
 
 
-**webpack directy**
+> **webpack directy**
 common.config.js - common is a set of rules that the application will follow for every browser
 -Putting together a list of rules we want to follow
 -entry:
@@ -59,7 +59,7 @@ postcss.config.js - works with css files
 prod.config.js - works on a server
 
 
-**Babel**
+> **Babel**
 A "." infront of a file name is a hidden file
 Babel is a JS compiler (Takes the code we write and compiles it into something that most browsers can read)
 -Certain browsers don't understand newer JS
@@ -73,15 +73,20 @@ returns: var nums = [1, 2, 3].map(function (el) {
 })
 
 
-**Overide Server Ports**
+> **Overide Server Ports**
 env.js - what dev host/port to use to test the code for the devServer (creating env.examples.js is normal)
 
 
-**package.json**
+> **package.json**
 (See package.json file)
 Most of the scripts deal a lot with dynamic behavoior and how it interacts with the server
 
 
-**Difference between package.json and package-lock.json**
+> **Difference between package.json and package-lock.json**
 package-lock.json contains more detailed information about the dependencies and EXACTLY what's being used
 DO NOT CHANGE THE PACKAGE-LOCK.json FILE (IT IS AUTOMATICALLY GENERATED)
+
+
+> **Procfile, Readme, Server JS**
+Procfile - Tool to deploy to the web (Type of server we want to use)
+server.js - Pulls config for the server (express, port, app, etc.)
