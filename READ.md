@@ -129,3 +129,5 @@ React.createElement("div", {
 **Deep Dive: Props, State, and this**
 > Functional Component (Dumb Component) - Not a lot of behavior like a button. Renders some kind of HTML element. Shouldn't have _state_.
 Class Component - Gets state of user and track their behavior.
+
+> Props = Properties of a component
