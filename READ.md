@@ -93,3 +93,34 @@ server.js - Pulls config for the server (express, port, app, etc.)
 
 > **Constructor**
 Going to allow you to set initial state and set custom functions to utilize
+
+
+> **JSX**
+(From Babeljs.io)
+<div className = "card" id = "5" styles = "{ color: red; font-wright: 900; }">
+  <div className = "title">
+<PortfolioItem title="Quip" url="google.com" />
+  </div>
+  
+  <div className = "description">
+    some details...
+  </div>
+</div>
+
+------------ Output -----------
+
+"use strict";
+
+/*#__PURE__*/
+React.createElement("div", {
+  className: "card",
+  id: "5",
+  styles: "{ color: red; font-wright: 900; }"
+}, /*#__PURE__*/React.createElement("div", {
+  className: "title"
+}, /*#__PURE__*/React.createElement(PortfolioItem, {
+  title: "Quip",
+  url: "google.com"
+})), /*#__PURE__*/React.createElement("div", {
+  className: "description"
+}, "some details..."));
