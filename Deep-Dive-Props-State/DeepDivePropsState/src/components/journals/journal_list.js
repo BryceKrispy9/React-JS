@@ -9,11 +9,16 @@ const rawJournalData = [
 
 //Class component
 export default class JournalList extends Component {
+    constructor(props) {
+        super();
+
+        this.state = {
+            journalData: rawJournalData,
+            greeting: 'Hi there',
+            isOpen: true
+        }
+    }
     render() {
-      return (
-        <div>
-          
-        </div>
-      );
+      return <h2>{this.props.heading}</h2>
     }
   }
