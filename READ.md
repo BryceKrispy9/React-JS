@@ -131,3 +131,9 @@ React.createElement("div", {
 Class Component - Gets state of user and track their behavior.
 
 > Props = Properties of a component
+
+
+**Component Lifecycle**
+> Mounting - Picking out what kind of data/processes need to occur when the component is going to load (Page content from outside API for example)
+Updating - Each time you have a component that gets updated (Web socket for example)
+Unmounting - Remove component from the DOM
