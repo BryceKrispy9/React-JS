@@ -9,15 +9,23 @@ export default class PortfolioContainer extends Component {
         this.state = {
             pageTitle: "Welcome to my Portfolio!",
             data: [
-                { title: "Xima Software" },
-                { title: "Eventbrite" },
-                { title: "Ministry Safe" }
+                { title: "Xima Software", category: "eCommerce" },
+                { title: "Eventbrite", category: "Scheduling" },
+                { title: "Ministry Safe", category: "Enterprise" }
             ]
         };
 
-        this.handlePageTitleUpdate = this.handlePageTitleUpdate.bind(this);
-
         console.log("Portfolio container has rendered");
+
+        this.handleFilter = this.handleFilter.bind(this); // Do this for each function that has an event
+    }
+
+    handleFilter(filter) { // Whenever you use a clickHandler, use 'handle' in the function title
+        this.setState({
+            data: this.state.data.filter(item => {
+                return item.category === filter;
+            })
+        }); // Whenever we want to update state values, call setState
     }
 
     portfolioItems() {
@@ -26,22 +34,17 @@ export default class PortfolioContainer extends Component {
         });
     }
 
-    handlePageTitleUpdate() {
-        this.setState({
-            pageTitle: "Something Else"
-        });
-    }
 
     render() {
         return (
             <div>
                 <h2>{this.state.pageTitle}</h2>
 
+                <button onClick = {() => this.handleFilter('eCommerce')}>eCommerce</button>
+                <button onClick = {() => this.handleFilter('Scheduling')}>Scheduling </button>
+                <button onClick = {() => this.handleFilter('Enterprise')}>Enterprise</button>
+
                 {this.portfolioItems()}
-
-                <hr/>
-
-                <button onClick = {this.handlePageTitleUpdate}>Change Title</button> 
             </div>
         );
     }
