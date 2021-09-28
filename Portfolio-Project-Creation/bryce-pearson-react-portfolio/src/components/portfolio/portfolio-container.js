@@ -12,7 +12,7 @@ export default class PortfolioContainer extends Component {
             data: [
                 { title: "Xima Software", category: "eCommerce", slug: 'xima-software' },
                 { title: "Pearson Remodeling", category: "Custom Websites", slug: 'pearson-remodeling' },
-                { title: "Ministry Safe", category: "Enterprise", slug: 'ministry-safe' }
+                { title: "Github", category: "Personal", slug: 'Github' }
             ]
         };
 
@@ -47,7 +47,7 @@ export default class PortfolioContainer extends Component {
 
                 <button onClick = {() => this.handleFilter('eCommerce')}>eCommerce</button>
                 <button onClick = {() => this.handleFilter('Custom-Websites')}>Custom Websites</button>
-                <button onClick = {() => this.handleFilter('Enterprise')}>Enterprise</button>
+                <button onClick = {() => this.handleFilter('Github')}>Github</button>
 
                 {this.portfolioItems()}
             </div>
