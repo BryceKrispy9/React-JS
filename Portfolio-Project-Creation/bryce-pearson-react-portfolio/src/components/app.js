@@ -10,6 +10,7 @@ import Contact from './pages/contact';
 import Blog from './pages/blog';
 import portfolioItem from './portfolio/portfolio-item';
 import portfolioDetail from './portfolio/portfolio-detail';
+import NoMatch from "./pages/no-match";
 
 export default class App extends Component {
   render() {
@@ -30,6 +31,7 @@ export default class App extends Component {
             <Route path = "/contact" component = {Contact} />
             <Route path = "/blog" component = {Blog} />
             <Route path = "/portfolio/:slug" component = {portfolioDetail} />
+            <Route component = {NoMatch} />
           </Switch>
           </div>
         </Router>
