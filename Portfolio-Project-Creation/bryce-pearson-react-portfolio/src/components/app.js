@@ -8,6 +8,8 @@ import Home from './pages/home';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Blog from './pages/blog';
+import portfolioItem from './portfolio/portfolio-item';
+import portfolioDetail from './portfolio/portfolio-detail';
 
 export default class App extends Component {
   render() {
@@ -27,6 +29,7 @@ export default class App extends Component {
             <Route path = "/about-me" component = {About} />
             <Route path = "/contact" component = {Contact} />
             <Route path = "/blog" component = {Blog} />
+            <Route path = "/portfolio/:slug" component = {portfolioDetail} />
           </Switch>
           </div>
         </Router>

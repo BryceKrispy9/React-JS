@@ -1,5 +1,7 @@
 This is my work on React.js
 
+For a NPX community-made react project, use `npx create-react-app my_app --use-npm`
+
 SET PATH=%AppData%\npm;%PATH%
 
 ^ Fixes the js-generate code and allows you to select a product

@@ -10,9 +10,9 @@ export default class PortfolioContainer extends Component {
             pageTitle: "Welcome to my Portfolio!",
             isLoading: false,
             data: [
-                { title: "Xima Software", category: "eCommerce" },
-                { title: "Eventbrite", category: "Scheduling" },
-                { title: "Ministry Safe", category: "Enterprise" }
+                { title: "Xima Software", category: "eCommerce", slug: 'xima-software' },
+                { title: "Pearson Remodeling", category: "Custom Websites", slug: 'pearson-remodeling' },
+                { title: "Ministry Safe", category: "Enterprise", slug: 'ministry-safe' }
             ]
         };
 
@@ -31,7 +31,7 @@ export default class PortfolioContainer extends Component {
 
     portfolioItems() {
         return this.state.data.map(item => {
-            return <PortfolioItem title={item.title} url={"google.com"} />;
+            return <PortfolioItem title={item.title} url={"google.com"} slug = {item.slug} />;
         });
     }
 
@@ -46,7 +46,7 @@ export default class PortfolioContainer extends Component {
                 <h2>{this.state.pageTitle}</h2>
 
                 <button onClick = {() => this.handleFilter('eCommerce')}>eCommerce</button>
-                <button onClick = {() => this.handleFilter('Scheduling')}>Scheduling </button>
+                <button onClick = {() => this.handleFilter('Custom-Websites')}>Custom Websites</button>
                 <button onClick = {() => this.handleFilter('Enterprise')}>Enterprise</button>
 
                 {this.portfolioItems()}
