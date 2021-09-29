@@ -10,17 +10,12 @@ export default class PortfolioContainer extends Component {
         this.state = {
             pageTitle: "Welcome to my Portfolio!",
             isLoading: false,
-            data: [
-                { title: "Xima Software", category: "eCommerce", slug: 'xima-software' },
-                { title: "Pearson Remodeling", category: "Custom Websites", slug: 'pearson-remodeling' },
-                { title: "Github", category: "Personal", slug: 'Github' }
-            ]
+            data: []
         };
 
         console.log("Portfolio container has rendered");
 
         this.handleFilter = this.handleFilter.bind(this); // Do this for each function that has an event
-        this.getPortfolioItems = this.getPortfolioItems.bind(this);
     }
 
     handleFilter(filter) { // Whenever you use a clickHandler, use 'handle' in the function title
@@ -37,6 +32,9 @@ export default class PortfolioContainer extends Component {
           .then(response => {
         // handle success
             console.log("response data", response);
+            this.setState({
+                data: response.data.portfolio_items
+            })
           })
           .catch(error => {
         // handle error
@@ -46,8 +44,13 @@ export default class PortfolioContainer extends Component {
 
     portfolioItems() {
         return this.state.data.map(item => {
-            return <PortfolioItem title={item.title} url={"google.com"} slug = {item.slug} />;
+            console.log("item data", item);
+            return <PortfolioItem title={item.name} url={item.url} slug = {item.id} />;
         });
+    }
+
+    componentDidMount() {
+        this.getPortfolioItems();
     }
 
 
@@ -55,8 +58,6 @@ export default class PortfolioContainer extends Component {
         if (this.state.isLoading) {
             return <div>Loading...</div>;
         }
-
-        this.getPortfolioItems();
 
         return (
             <div>
