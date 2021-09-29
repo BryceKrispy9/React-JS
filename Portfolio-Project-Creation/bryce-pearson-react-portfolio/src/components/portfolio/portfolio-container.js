@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 import PortfolioItem from "./portfolio-item";
 
@@ -19,6 +20,7 @@ export default class PortfolioContainer extends Component {
         console.log("Portfolio container has rendered");
 
         this.handleFilter = this.handleFilter.bind(this); // Do this for each function that has an event
+        this.getPortfolioItems = this.getPortfolioItems.bind(this);
     }
 
     handleFilter(filter) { // Whenever you use a clickHandler, use 'handle' in the function title
@@ -28,6 +30,19 @@ export default class PortfolioContainer extends Component {
             })
         }); // Whenever we want to update state values, call setState
     }
+
+    getPortfolioItems() {
+        axios
+          .get('https://brycepearson.devcamp.space/portfolio/portfolio_items')
+          .then(response => {
+        // handle success
+            console.log("response data", response);
+          })
+          .catch(error => {
+        // handle error
+            console.log(error);
+          });
+      }
 
     portfolioItems() {
         return this.state.data.map(item => {
@@ -40,6 +55,8 @@ export default class PortfolioContainer extends Component {
         if (this.state.isLoading) {
             return <div>Loading...</div>;
         }
+
+        this.getPortfolioItems();
 
         return (
             <div>
