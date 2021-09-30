@@ -11,9 +11,11 @@ export default function(props) {
     const { id, description, thumb_image_url, logo } = props.item;
     return (
         <div>
-        <div>{description}</div>
+        <img src = {thumb_image_url} />
+        <img src = {logo} />
+            <div>{description}</div>
 
-        <Link to = {`/portfolio/${id}`}>Link</Link>
+            <Link to = {`/portfolio/${id}`}>Link</Link>
         </div>
     );
 }
