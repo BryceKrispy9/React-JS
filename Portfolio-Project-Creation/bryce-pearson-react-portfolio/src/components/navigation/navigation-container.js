@@ -9,6 +9,7 @@ export default class NavigationContainer extends Component {
     render() {
         return (
             <div className = "nav-wrapper">
+                <div class = "left-column">
             <NavLink exact to = "/" activeClassName = "nav-link-active">Home</NavLink>
 
             <NavLink to = "/about-me" activeClassName = "nav-link-active">About</NavLink>
@@ -16,6 +17,9 @@ export default class NavigationContainer extends Component {
             <NavLink to = "/blog" activeClassName = "nav-link-active">Blog</NavLink>
 
                 {false ? <button>Add Blog</button> : null}
+                </div>
+
+                <div className = "right-column">Bryce Pearson</div>
             </div>
         )
     }
