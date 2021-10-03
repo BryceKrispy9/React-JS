@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from "moment";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PortfolioContainer from './portfolio/portfolio-container';
@@ -8,7 +7,6 @@ import Home from './pages/home';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Blog from './pages/blog';
-import portfolioItem from './portfolio/portfolio-item';
 import portfolioDetail from './portfolio/portfolio-detail';
 import NoMatch from "./pages/no-match";
 
@@ -19,10 +17,6 @@ export default class App extends Component {
 
         <Router>
           <div>
-          <h1>Bryce Pearson Portfolio</h1>
-        <div>
-          {moment().format('MMMM Do YYYY, h:mm:ss a')}
-        </div>
           <NavigationContainer />
 
           <Switch>
