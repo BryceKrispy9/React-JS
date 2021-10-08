@@ -53,7 +53,7 @@ export default class App extends Component {
                 <Auth
                   {...props}
                   handleSuccessfulLogin = {this.handleSuccessfulLogin}
-                  handleUnSuccessfulLogin = {this.handleUnsuccessfulLogin}
+                  handleUnsuccessfulLogin = {this.handleUnsuccessfulLogin}
                   />
               )}
             />
