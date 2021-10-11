@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
-import PortfolioContainer from "./portfolio/portfolio-container";
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
 import About from "./pages/about";
@@ -22,6 +21,7 @@ export default class App extends Component {
 
 		this.handleSuccesfulLogin = this.handleSuccesfulLogin.bind(this);
 		this.handleUnsuccesfulLogin = this.handleUnsuccesfulLogin.bind(this);
+		this.handleSuccessfulLogout = this.handleSuccessfulLogout.bind(this); // Gives access to component
 	}
 
 	handleSuccesfulLogin() {
@@ -31,6 +31,12 @@ export default class App extends Component {
 	}
 
 	handleUnsuccesfulLogin() {
+		this.setState({
+			loggedInStatus: "NOT_LOGGED_IN",
+		});
+	}
+
+	handleSuccessfulLogout() {
 		this.setState({
 			loggedInStatus: "NOT_LOGGED_IN",
 		});
@@ -81,6 +87,7 @@ export default class App extends Component {
 					<div>
 						<NavigationContainer
 							loggedInStatus={this.state.loggedInStatus}
+							handleSuccessfulLogout={this.handleSuccessfulLogout} // Passing this as a prop in nav container
 						/>
 
 						<h2>{this.state.loggedInStatus}</h2>
