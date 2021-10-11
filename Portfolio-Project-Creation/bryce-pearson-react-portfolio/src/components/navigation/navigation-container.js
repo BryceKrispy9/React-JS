@@ -3,7 +3,7 @@ import axios from "axios";
 import { withRouter } from "react-router";
 import { NavLink } from "react-router-dom";
 
-const NavigationContainer = (props) => {
+const NavigationComponent = (props) => {
 	const dynamicLink = (route, linkText) => {
 		return (
 			<div className="nav-link-wrapper">
@@ -73,4 +73,4 @@ const NavigationContainer = (props) => {
 	);
 };
 
-export default withRouter(NavigationContainer);
+export default withRouter(NavigationComponent);
