@@ -119,8 +119,9 @@ export default class App extends Component {
 								? this.authorizedPages()
 								: null}
 							<Route
-								path="/portfolio-manager"
-								component={PortfolioManager}
+								exact
+								path="/portfolio/:slug"
+								component={portfolioDetail}
 							/>
 
 							<Route component={NoMatch} />
