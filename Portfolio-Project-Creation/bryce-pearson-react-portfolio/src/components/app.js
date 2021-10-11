@@ -122,11 +122,7 @@ export default class App extends Component {
 								path="/portfolio-manager"
 								component={PortfolioManager}
 							/>
-							<Route
-								exact
-								path="/portfolio/:slug"
-								component={portfolioDetail}
-							/>
+
 							<Route component={NoMatch} />
 						</Switch>
 					</div>

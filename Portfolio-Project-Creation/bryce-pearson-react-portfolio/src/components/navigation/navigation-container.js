@@ -22,7 +22,7 @@ const NavigationComponent = (props) => {
 			.then((response) => {
 				if (response.status === 200) {
 					props.history.push("/");
-					props.handeSuccessfulLogout();
+					props.handleSuccessfulLogout();
 				}
 				return response.data; // Always return after a promise ^
 			})
