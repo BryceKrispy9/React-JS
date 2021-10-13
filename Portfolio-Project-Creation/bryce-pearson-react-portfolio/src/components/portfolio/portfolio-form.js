@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class PortfolioForm extends Component {
 	// Forms that use a state should use class component
@@ -39,7 +40,19 @@ export default class PortfolioForm extends Component {
 	}
 
 	handleSubmit(event) {
-		this.buildForm();
+		axios
+			.post(
+				"https://brycepearson.devcamp.space/portfolio/portfolio_items", // API enpoint
+				this.buildForm(), // Add in all the data from the buildform state
+				{ withCredentials: true } // Server needs to recognize who this is coming from
+			)
+			.then((response) => {
+				console.log("response", response);
+			})
+			.catch((error) => {
+				console.log("portfolio form handleSubmit error", error);
+			});
+
 		event.preventDefault(); // Prevents refresh of page - A synthetic event (Document Object Module {DOM}) has divs, h1 tags, etc., like a normal HTML event. This is a virtual event (Also works with the DOM) and allows for better performance
 	}
 
