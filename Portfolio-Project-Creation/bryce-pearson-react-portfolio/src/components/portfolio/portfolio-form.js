@@ -17,10 +17,18 @@ export default class PortfolioForm extends Component {
 		};
 
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(event) {
-		console.log("handle change", event);
+		this.setState({
+			[event.target.name]: event.target.value, // Updates state when typing in Portfolio form
+		});
+	}
+
+	handleSubmit(event) {
+		console.log("event", event);
+		event.preventDefault(); // Prevents refresh of page - A synthetic event (Document Object Module {DOM}) has divs, h1 tags, etc., like a normal HTML event. This is a virtual event (Also works with the DOM) and allows for better performance
 	}
 
 	render() {
@@ -28,7 +36,7 @@ export default class PortfolioForm extends Component {
 			<div>
 				<h1>PortfolioForm</h1>
 
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<div>
 						<input
 							type="text"
