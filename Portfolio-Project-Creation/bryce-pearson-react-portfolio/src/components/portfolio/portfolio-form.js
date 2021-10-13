@@ -20,6 +20,18 @@ export default class PortfolioForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	buildForm() {
+		let formData = new FormData(); // Create a new form data object
+
+		formData.append("portfolio_item[name]", this.state.name); // API expects an object - portfolio_item is named this in the API
+		formData.append("portfolio_item[description]", this.state.description);
+		formData.append("portfolio_item[url]", this.state.url);
+		formData.append("portfolio_item[category]", this.state.category);
+		formData.append("portfolio_item[position]", this.state.position);
+
+		return formData; // Return the completed full object that has the key vaulued pairs above
+	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value, // Updates state when typing in Portfolio form
@@ -27,7 +39,7 @@ export default class PortfolioForm extends Component {
 	}
 
 	handleSubmit(event) {
-		console.log("event", event);
+		this.buildForm();
 		event.preventDefault(); // Prevents refresh of page - A synthetic event (Document Object Module {DOM}) has divs, h1 tags, etc., like a normal HTML event. This is a virtual event (Also works with the DOM) and allows for better performance
 	}
 
