@@ -9,7 +9,7 @@ export default class PortfolioForm extends Component {
 		this.state = {
 			name: "",
 			description: "",
-			category: "",
+			category: "Telecommunications",
 			position: "",
 			url: "",
 			thumb_image: "",
@@ -104,7 +104,7 @@ export default class PortfolioForm extends Component {
 						</select>
 
 						<div>
-							<input
+							<textarea
 								type="text"
 								name="description"
 								placeholder="Description"
