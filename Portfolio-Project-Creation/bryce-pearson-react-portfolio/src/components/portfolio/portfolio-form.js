@@ -89,13 +89,19 @@ export default class PortfolioForm extends Component {
 							onChange={this.handleChange}
 						/>
 
-						<input
-							type="text"
+						<select // Drop down with categories
 							name="category"
-							placeholder="Category"
 							value={this.state.category}
 							onChange={this.handleChange}
-						/>
+						>
+							<option value="Telecommunications">
+								Telecommunications
+							</option>
+							<option value="custom-websites">
+								Custom Websites
+							</option>
+							<option value="Github">Github</option>
+						</select>
 
 						<div>
 							<input
