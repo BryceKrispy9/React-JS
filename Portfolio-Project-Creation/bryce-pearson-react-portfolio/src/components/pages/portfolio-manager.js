@@ -19,9 +19,9 @@ export default class PortfolioManager extends Component {
 	}
 
 	handleSuccessfulFormSubmission(portfolioItem) {
-		// TODO
-		// Update the portfolioItems state
-		// Add portfolioItem to the list
+		this.setState({
+			portfolioItems: [portfolioItem].concat(this.state.portfolioItems),
+		});
 	}
 
 	handleFormSubmissionError(error) {
@@ -31,7 +31,7 @@ export default class PortfolioManager extends Component {
 	getPortfolioItems() {
 		axios
 			.get(
-				"https://brycepearson.devcamp.space/portfolio/portfolio_items",
+				"https://brycepearson.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc", // The question mark is where you put your unique identifiers after it
 				{ withCredentials: true }
 			)
 			.then((response) => {
