@@ -19,6 +19,23 @@
 				object-fit: cover;
 				border-radius: 5px;
 			}
+
+			.image-removal-link {
+				display: flex;
+				justify-content: center;
+				a {
+					font-weight: 900;
+					font-size: 20px;
+					padding-top: 10px;
+					color: black;
+					cursor: pointer;
+					transition: 0.3s ease-in-out;
+
+					&:hover {
+						color: $warning;
+					}
+				}
+			}
 		}
 	}
 }
