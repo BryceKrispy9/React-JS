@@ -28,6 +28,40 @@ export default class PortfolioForm extends Component {
 		this.handleThumbDrop = this.handleThumbDrop.bind(this);
 		this.handleBannerDrop = this.handleBannerDrop.bind(this);
 		this.handleLogoDrop = this.handleLogoDrop.bind(this);
+
+		this.thumbRef = React.createRef();
+		this.bannerRef = React.createRef();
+		this.logoRef = React.createRef();
+	}
+
+	componentDidUpdate() {
+		// React lifecycle hook
+		if (Object.keys(this.props.portfolioToEdit).length > 0) {
+			// Grab props - is it empty? If it is, skip process - else? Grab records and store them in a local variable
+			const {
+				id,
+				name,
+				description,
+				category,
+				position,
+				url,
+				thumb_image_url,
+				banner_image_url,
+				logo_url,
+			} = this.props.portfolioToEdit;
+
+			this.props.clearPortfolioToEdit(); // Clears so the above object does not pop up again (Will fire everytime there is something inside the component)
+
+			this.setState({
+				// Calls local state in portfolio form
+				id: id,
+				name: name || "", // Nill check - "||" means "or" (If there's a name, put name in there, else, empty string)
+				description: description || "",
+				category: category || "Telecommunications",
+				position: position || "",
+				url: url || "",
+			});
+		}
 	}
 
 	handleThumbDrop() {
