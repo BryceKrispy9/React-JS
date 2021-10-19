@@ -19,6 +19,9 @@ export default class PortfolioForm extends Component {
 			thumb_image: "",
 			banner_image: "",
 			logo: "",
+			editMode: false,
+			apiURL: "https://brycepearson.devcamp.space/portfolio/portfolio_items",
+			apiAction: "post",
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -60,6 +63,9 @@ export default class PortfolioForm extends Component {
 				category: category || "Telecommunications",
 				position: position || "",
 				url: url || "",
+				editMode: true, // If editing, change these 3 settings
+				apiURL: `https://brycepearson.devcamp.space/portfolio/portfolio_items/${id}`,
+				apiAction: "patch",
 			});
 		}
 	}
@@ -135,12 +141,18 @@ export default class PortfolioForm extends Component {
 	}
 
 	handleSubmit(event) {
-		axios
-			.post(
-				"https://brycepearson.devcamp.space/portfolio/portfolio_items", // API enpoint
-				this.buildForm(), // Add in all the data from the buildform state
-				{ withCredentials: true } // Server needs to recognize who this is coming from
-			)
+		axios({
+			method: this.state.apiAction, // Passed in config object with a key value setup
+			url: this.state.apiURL,
+			data: this.buildForm(),
+			withCredentials: true,
+		})
+			// axios
+			// 	.post(
+			// 		"https://brycepearson.devcamp.space/portfolio/portfolio_items", // API endpoint
+			// 		this.buildForm(), // Add in all the data from the buildform state
+			// 		{ withCredentials: true } // Server needs to recognize who this is coming from
+			// 	)
 			.then((response) => {
 				this.props.handleSuccessfulFormSubmission(
 					response.data.portfolio_item
