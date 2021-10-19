@@ -6,21 +6,20 @@ import "../../../node_modules/react-dropzone-component/styles/filepicker.css";
 import "../../../node_modules/dropzone/dist/min/dropzone.min.css";
 
 export default class PortfolioForm extends Component {
-	// Forms that use a state should use class component
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			name: "",
 			description: "",
-			category: "Telecommunications",
+			category: "eCommerce",
 			position: "",
 			url: "",
 			thumb_image: "",
 			banner_image: "",
 			logo: "",
 			editMode: false,
-			apiURL: "https://brycepearson.devcamp.space/portfolio/portfolio_items",
+			apiUrl: "https://jordan.devcamp.space/portfolio/portfolio_items",
 			apiAction: "post",
 		};
 
@@ -38,9 +37,7 @@ export default class PortfolioForm extends Component {
 	}
 
 	componentDidUpdate() {
-		// React lifecycle hook
 		if (Object.keys(this.props.portfolioToEdit).length > 0) {
-			// Grab props - is it empty? If it is, skip process - else? Grab records and store them in a local variable
 			const {
 				id,
 				name,
@@ -53,25 +50,23 @@ export default class PortfolioForm extends Component {
 				logo_url,
 			} = this.props.portfolioToEdit;
 
-			this.props.clearPortfolioToEdit(); // Clears so the above object does not pop up again (Will fire everytime there is something inside the component)
+			this.props.clearPortfolioToEdit();
 
 			this.setState({
-				// Calls local state in portfolio form
 				id: id,
-				name: name || "", // Nill check - "||" means "or" (If there's a name, put name in there, else, empty string)
+				name: name || "",
 				description: description || "",
-				category: category || "Telecommunications",
+				category: category || "eCommerce",
 				position: position || "",
 				url: url || "",
-				editMode: true, // If editing, change these 3 settings
-				apiURL: `https://brycepearson.devcamp.space/portfolio/portfolio_items/${id}`,
+				editMode: true,
+				apiUrl: `https://jordan.devcamp.space/portfolio/portfolio_items/${id}`,
 				apiAction: "patch",
 			});
 		}
 	}
 
 	handleThumbDrop() {
-		// Passes to dropzone component - when file is dropped on component, will look in addedfile and see what files I have access to
 		return {
 			addedfile: (file) => this.setState({ thumb_image: file }),
 		};
@@ -93,7 +88,7 @@ export default class PortfolioForm extends Component {
 		return {
 			iconFiletypes: [".jpg", ".png"],
 			showFiletypeIcon: true,
-			postUrl: "https://httpbin.org/post", // Allows you to call it without looking at data using different http verbs (Will always return true)
+			postUrl: "https://httpbin.org/post",
 		};
 	}
 
@@ -105,9 +100,9 @@ export default class PortfolioForm extends Component {
 	}
 
 	buildForm() {
-		let formData = new FormData(); // Create a new form data object
+		let formData = new FormData();
 
-		formData.append("portfolio_item[name]", this.state.name); // API expects an object - portfolio_item is named this in the API
+		formData.append("portfolio_item[name]", this.state.name);
 		formData.append("portfolio_item[description]", this.state.description);
 		formData.append("portfolio_item[url]", this.state.url);
 		formData.append("portfolio_item[category]", this.state.category);
@@ -131,39 +126,55 @@ export default class PortfolioForm extends Component {
 			formData.append("portfolio_item[logo]", this.state.logo);
 		}
 
-		return formData; // Return the completed full object that has the key vaulued pairs above
+		return formData;
 	}
 
 	handleChange(event) {
 		this.setState({
-			[event.target.name]: event.target.value, // Updates state when typing in Portfolio form
+			[event.target.name]: event.target.value,
 		});
 	}
 
 	handleSubmit(event) {
 		axios({
-			method: this.state.apiAction, // Passed in config object with a key value setup
-			url: this.state.apiURL,
+			method: this.state.apiAction,
+			url: this.state.apiUrl,
 			data: this.buildForm(),
 			withCredentials: true,
 		})
-			// axios
-			// 	.post(
-			// 		"https://brycepearson.devcamp.space/portfolio/portfolio_items", // API endpoint
-			// 		this.buildForm(), // Add in all the data from the buildform state
-			// 		{ withCredentials: true } // Server needs to recognize who this is coming from
-			// 	)
 			.then((response) => {
-				this.props.handleSuccessfulFormSubmission(
-					response.data.portfolio_item
-				);
-				console.log("response", response);
+				// When it comes back, are we in edit more or not? If yes, call function and pull portfolio items from api and change state, else just pass in record + stack on top of other ones
+				if (this.state.editMode) {
+					this.props.handleEditFormSubmission();
+				} else {
+					this.props.handleNewFormSubmission(
+						response.data.portfolio_item
+					);
+				}
+
+				this.setState({
+					name: "",
+					description: "",
+					category: "eCommerce",
+					position: "",
+					url: "",
+					thumb_image: "",
+					banner_image: "",
+					logo: "",
+					editMode: false,
+					apiUrl: "https://jordan.devcamp.space/portfolio/portfolio_items",
+					apiAction: "post",
+				});
+
+				[this.thumbRef, this.bannerRef, this.logoRef].forEach((ref) => {
+					ref.current.dropzone.removeAllFiles();
+				});
 			})
 			.catch((error) => {
 				console.log("portfolio form handleSubmit error", error);
 			});
 
-		event.preventDefault(); // Prevents refresh of page - A synthetic event (Document Object Module {DOM}) has divs, h1 tags, etc., like a normal HTML event. This is a virtual event (Also works with the DOM) and allows for better performance
+		event.preventDefault();
 	}
 
 	render() {
