@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import PortfolioSidebarList from "../portfolio/portfolio-siderbar-list";
+import PortfolioSidebarList from "../portfolio/portfolio-sidebar-list";
 import PortfolioForm from "../portfolio/portfolio-form";
 
 export default class PortfolioManager extends Component {
@@ -24,7 +24,6 @@ export default class PortfolioManager extends Component {
 	}
 
 	clearPortfolioToEdit() {
-		// Does nothing but return the state to an empty object
 		this.setState({
 			portfolioToEdit: {},
 		});
@@ -73,8 +72,10 @@ export default class PortfolioManager extends Component {
 	getPortfolioItems() {
 		axios
 			.get(
-				"https://brycepearson.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc", // The question mark is where you put your unique identifiers after it
-				{ withCredentials: true }
+				"https://brycepearson.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc",
+				{
+					withCredentials: true,
+				}
 			)
 			.then((response) => {
 				this.setState({
@@ -91,6 +92,7 @@ export default class PortfolioManager extends Component {
 	}
 
 	render() {
+		console.log(this.state.portfolioItems);
 		return (
 			<div className="portfolio-manager-wrapper">
 				<div className="left-column">
