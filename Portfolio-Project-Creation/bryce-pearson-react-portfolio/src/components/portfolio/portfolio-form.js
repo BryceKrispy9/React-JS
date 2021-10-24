@@ -39,7 +39,19 @@ export default class PortfolioForm extends Component {
 	}
 
 	deleteImage(imageType) {
-		console.log("deleteImage", imageType);
+		axios
+			.delete(
+				`https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`,
+				{ withCredentials: true }
+			)
+			.then((response) => {
+				this.setState({
+					[`${imageType}_url`]: "", // Sets page state to empty string (imageType_url when we delete an image
+				});
+			})
+			.catch((error) => {
+				console.log("deleteImage error", error);
+			});
 	}
 
 	componentDidUpdate() {
@@ -66,7 +78,7 @@ export default class PortfolioForm extends Component {
 				position: position || "",
 				url: url || "",
 				editMode: true,
-				apiUrl: `https://bryce.devcamp.space/portfolio/portfolio_items/${id}`,
+				apiUrl: `https://brycepearson.devcamp.space/portfolio/portfolio_items/${id}`,
 				apiAction: "patch",
 				thumb_image_url: thumb_image_url || "",
 				banner_image_url: banner_image_url || "",
