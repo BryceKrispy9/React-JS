@@ -138,3 +138,8 @@ className: "description"
 2. Query (GET)
 3. Update records
 4. Delete records
+
+5. Create Component
+6. Call outside API
+7. API sends data to us
+8. Render data to screen
