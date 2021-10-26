@@ -47,7 +47,7 @@ export default class BlogForm extends Component {
 		event.preventDefault();
 	}
 
-	handleChange() {
+	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value,
 		});
