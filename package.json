@@ -5,7 +5,8 @@
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "html-to-draftjs": "^1.5.0",
-    "react-draft-wysiwyg": "^1.14.7"
+    "react-draft-wysiwyg": "^1.14.7",
+    "react-html-parser": "^2.0.2"
   },
   "devDependencies": {
     "prettier": "2.4.1"
