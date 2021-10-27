@@ -41,14 +41,16 @@ export default class BlogForm extends Component {
 				{ withCredentials: true }
 			)
 			.then((response) => {
-				this.props.handleSuccessfulFormSubmission(
-					response.data.portfolio_blog
-				);
-
 				this.setState({
 					title: "",
 					blog_status: "",
+					content: "",
 				});
+
+				this.props.handleSuccessfulFormSubmission(
+					// Modal does not close until after setState has occurred (Fixed memory leak)
+					response.data.portfolio_blog
+				);
 			})
 			.catch((error) => {
 				console.log("handleSubmit for blog error", error);
